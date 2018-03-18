@@ -8,7 +8,8 @@ module.exports.index = (req, res) => {
   db.Spot.find().exec((err, spots) => {
     if(err) return console.log("Error: " + err);
     res.json(spots);
-  })
+  });
+  // res.json({message: "This is the spots index page"});
 };
 
 // Spot Page (SHOW)

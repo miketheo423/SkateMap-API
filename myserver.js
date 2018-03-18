@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 let app = express();
+const mongoose = require('mongoose');
 
 // parse incoming urlencoded form data
 // and populate the req.body object
@@ -9,9 +10,13 @@ app.use(bodyParser.json());
 
 let db = require('./models');
 
+
 app.get('/', (req, res) => {
   res.json({ message: "Hello World" });
 });
+
+let routes = require('./config/routes');
+app.use(routes)
 
 /**********
  * SERVER *

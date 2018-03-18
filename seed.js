@@ -25,8 +25,13 @@ let spotList = [
   }
 ];
 
-db.Spot.create(spotList, (err, spots) => {
-  if(err) return console.log("Error: "+ err);
+db.Spot.remove({}, (err, res) => {
+  if(err) return console.log("Error: " + err);
+  console.log('All Spots Deleted');
+});
+
+db.Spot.create(spotList, (err, spot) => {
+  if(err) return console.log("Error: " + err);
   console.log("New spot was created", spot._id);
   process.exit();
 });
