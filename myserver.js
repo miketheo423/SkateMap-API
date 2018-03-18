@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 let routes = require('./config/routes');
-app.use(routes)
+app.use(routes);
 
 /**********
  * SERVER *

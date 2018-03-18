@@ -17,7 +17,7 @@ module.exports.show = (req, res) => {
   db.Spot.findOne({_id: req.params.id}, (err, spot) => {
     if(err) return console.log('Error: ' + err);
     res.json(spot);
-  })
+  });
 };
 
 // Spot CREATE
