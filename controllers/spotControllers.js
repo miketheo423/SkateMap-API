@@ -42,7 +42,7 @@ module.exports.create = (req, res) => {
 module.exports.edit = (req, res) => {
   db.Spot.findOne({_id: req.params.id}, (err, spot) => {
     if(err) return console.log("Error: " + err);
-  });
+    console.log(spot);
     spot.name = req.body.name;
     spot.description = req.body.description;
     spot.images = req.body.images;
@@ -51,11 +51,12 @@ module.exports.edit = (req, res) => {
     spot.coordinate = req.body.coordinate;
     spot.save();
     res.json(spot);
+  });
 };
 
 // Spot DELETE
 module.exports.delete = (req, res) => {
-  db.user.findOneAndRemove({_id: req.parms.id }, (err, deletedSpot) => {
+  db.Spot.findOneAndRemove({_id: req.params.id }, (err, deletedSpot) => {
     res.send("Spot was successfully deleted");
   });
 };
