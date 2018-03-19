@@ -1,6 +1,5 @@
 var db = require('../models');
 const axios = require('axios');
-// const request = require('request');
 
 
 // Spots Feed (INDEX) 
@@ -9,7 +8,6 @@ module.exports.index = (req, res) => {
     if(err) return console.log("Error: " + err);
     res.json(spots);
   });
-  // res.json({message: "This is the spots index page"});
 };
 
 // Spot Page (SHOW)
@@ -41,16 +39,21 @@ module.exports.create = (req, res) => {
 // Spot UPDATE
 module.exports.edit = (req, res) => {
   db.Spot.findOne({_id: req.params.id}, (err, spot) => {
-    if(err) return console.log("Error: " + err);
-    console.log(spot);
-    spot.name = req.body.name;
-    spot.description = req.body.description;
-    spot.images = req.body.images;
-    spot.userId = req.body.userId;
-    spot.features = req.body.features;
-    spot.coordinate = req.body.coordinate;
-    spot.save();
-    res.json(spot);
+    if(err) {
+      return console.log("Error: " + err);
+    } else if(req.user === spot.userId) {
+      console.log(spot);
+      spot.name = req.body.name;
+      spot.description = req.body.description;
+      spot.images = req.body.images;
+      spot.userId = req.body.userId;
+      spot.features = req.body.features;
+      spot.coordinate = req.body.coordinate;
+      spot.save();
+      res.json(spot);
+      }
+      console.log(req.user);
+    res.send("You are not authorized to edit this spot.");
   });
 };
 

@@ -41,9 +41,9 @@ function genJti() {
 
 function getUserScheme(req) {
   
-  var username;
-  var type;
-  var userSearch = {};
+  let username;
+  let type;
+  let userSearch = {};
 
   // The POST contains a username and not an email
   if(req.body.username) {
