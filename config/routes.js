@@ -31,23 +31,23 @@ router.use('/protected', jwtCheck, requireScope('full_access'));
 //////////////////////
 
 /** INDEX Route **/
-router.route('/spots')
+router.route('protected/protected/spots')
   .get(spotControllers.index);
 
 /** SHOW Route **/
-router.route('/spots/:id')
+router.route('protected/spots/:id')
   .get(spotControllers.show);
 
 /** CREATE Route **/
-router.route('/spots')
+router.route('protected/spots')
   .post(spotControllers.create);
 
 /** UPDATE Route **/
-router.route('/spots/:id')
+router.route('protected/spots/:id')
   .put(spotControllers.edit);
 
 /** DELETE Route **/
-router.route('/spots/:id')
+router.route('protected/spots/:id')
   .delete(spotControllers.delete);
 
 //////////////////////
